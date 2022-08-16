@@ -14,4 +14,7 @@ export class StudentsService {
   createpost(studentPost: StudentPost): Observable<StudentPost> {
     return from (this.studentPostRepository.save(studentPost));
   }
+  findAllPosts():Observable<StudentPost[]>{
+    return from(this.studentPostRepository.find());
+  }
 }

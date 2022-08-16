@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { StudentPost } from '../model/post.interface';
 import { StudentsService } from '../Services/student.service';
 import { Observable} from 'rxjs';
@@ -11,5 +11,10 @@ export class StudentsController {
     @Post()
   create(@Body() post:StudentPost):Observable<StudentPost> {
     return this.studentService.createpost(post);
+  }
+   
+  @Get()
+  findAll():Observable<StudentPost[]>{
+    return this.studentService.findAllPosts();
   }
 }
