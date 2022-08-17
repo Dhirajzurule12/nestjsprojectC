@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentModule } from './studentmanagement/student.module';
+import { BookModule } from './book/book.module';
 
 
 @Module({
@@ -20,11 +21,11 @@ import { StudentModule } from './studentmanagement/student.module';
       synchronize: true,
     }),
     StudentModule,
-   
+    BookModule,
 
- 
+
   ],
   controllers: [AppController],
-  providers: [AppService, ],
+  providers: [AppService,],
 })
-export class AppModule {}
+export class AppModule { }
