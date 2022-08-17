@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Observable,from} from 'rxjs';
-import { Repository,UpdateResult} from 'typeorm';
+import {DeleteResult, Repository,UpdateResult,} from 'typeorm';
 import { StudentPostEntity } from '../model/post.entity';
 import { StudentPost } from '../model/post.interface';
 @Injectable()
@@ -20,6 +20,10 @@ export class StudentsService {
 
   updatePost(id:number,studentPost: StudentPost):Observable<UpdateResult>{
          return from (this.studentPostRepository.update(id,studentPost));
+  }
+
+  deletePost(id:number):Observable<DeleteResult>{
+    return from(this.studentPostRepository.delete(id))
   }
   
 }
