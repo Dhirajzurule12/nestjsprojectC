@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Observable,from} from 'rxjs';
-import { Repository } from 'typeorm';
+import { Repository,UpdateResult} from 'typeorm';
 import { StudentPostEntity } from '../model/post.entity';
 import { StudentPost } from '../model/post.interface';
 @Injectable()
@@ -17,4 +17,9 @@ export class StudentsService {
   findAllPosts():Observable<StudentPost[]>{
     return from(this.studentPostRepository.find());
   }
+
+  updatePost(id:number,studentPost: StudentPost):Observable<UpdateResult>{
+         return from (this.studentPostRepository.update(id,studentPost));
+  }
+  
 }
