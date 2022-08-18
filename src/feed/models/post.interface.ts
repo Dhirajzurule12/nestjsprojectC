@@ -1,9 +1,15 @@
 /* eslint-disable prettier/prettier */
+
+// import { IsNumber } from "class-validator";
+
 export interface FeedPost {
   user_id?: number;
   name?: string;
-  createdAt?: Date;
+  gender?: string;
   email?: string;
-  location?: string;
-  github?: string;
+  address?: string;
+  state?: string;
+  mobile_number?: number;
+  role?: string;
+  country?: string;
 }
