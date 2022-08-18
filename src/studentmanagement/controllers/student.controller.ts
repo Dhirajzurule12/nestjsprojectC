@@ -5,7 +5,6 @@ import {
   Get,
   HttpStatus,
   Param,
-  ParseUUIDPipe,
   Post,
   Put,
 } from '@nestjs/common';
@@ -30,7 +29,7 @@ export class StudentsController {
   @Put(':id')
   update(
     @Param('id',
-    new ParseUUIDPipe({errorHttpStatusCode:HttpStatus.NOT_ACCEPTABLE}),
+   
     ) id: number,
     @Body()
     studentPost: StudentPost,

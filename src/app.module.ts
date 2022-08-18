@@ -14,7 +14,7 @@ import { EmployeeModule } from './employee/employee.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true },),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.POSTGRES_HOST,
@@ -29,8 +29,7 @@ import { EmployeeModule } from './employee/employee.module';
     StudentModule,
     BookModule,
     ProductModule,
- ],
-    FeedModule,
+     FeedModule,
     EmployeeModule
   ],
   controllers: [AppController],
