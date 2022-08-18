@@ -18,6 +18,8 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, createDocument(app));
   // app.setGlobalPrefix('nestjs');
 
+  await app.listen(3000);
+
   const config = new DocumentBuilder()
     .setTitle('Cats example')
     .setDescription('The cats API description')
@@ -26,6 +28,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  await app.listen(3003);
+  //await app.listen(3003);
+
 }
 bootstrap();
