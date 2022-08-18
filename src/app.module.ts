@@ -7,7 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentModule } from './studentmanagement/student.module';
 import { BookModule } from './book/book.module';
 import { FeedModule } from './feed/feed.module';
-
+import { EmployeeModule } from './employee/employee.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -24,6 +24,7 @@ import { FeedModule } from './feed/feed.module';
     StudentModule,
     BookModule,
     FeedModule,
+    EmployeeModule
   ],
   controllers: [AppController],
   providers: [AppService],
