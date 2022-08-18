@@ -32,10 +32,6 @@ export class BookService {
 
 
 
-
-    updatePutBook(id: number, book: Book): Observable<UpdateResult> {
-        return from(this.bookRepository.update(id, book));
-    }
     updatePatchBook(id: number, book: Book): Observable<UpdateResult> {
         return from(this.bookRepository.update(id, book));
     }
