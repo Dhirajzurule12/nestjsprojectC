@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentModule } from './studentmanagement/student.module';
 import { BookModule } from './book/book.module';
+import { ProductModule } from './product/product.module';
 
 
 @Module({
@@ -19,12 +20,12 @@ import { BookModule } from './book/book.module';
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
+      
     }),
     StudentModule,
     BookModule,
-
-
-  ],
+    ProductModule,
+ ],
   controllers: [AppController],
   providers: [AppService,],
 })
