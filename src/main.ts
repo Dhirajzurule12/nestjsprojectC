@@ -11,7 +11,7 @@ import { createDocument } from './swagger/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   //app.setGlobalPrefix('nestjs');
-  await app.listen(3000);
+  // await app.listen(3000);
   app.useGlobalPipes(new ValidationPipe());
   SwaggerModule.setup('api', app, createDocument(app));
   // app.setGlobalPrefix('nestjs');
