@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -7,7 +8,6 @@ import { StudentModule } from './studentmanagement/student.module';
 import { BookModule } from './book/book.module';
 import { FeedModule } from './feed/feed.module';
 import { EmployeeModule } from './employee/employee.module';
-
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -24,9 +24,9 @@ import { EmployeeModule } from './employee/employee.module';
     StudentModule,
     BookModule,
     FeedModule,
-    EmployeeModule,
+    EmployeeModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

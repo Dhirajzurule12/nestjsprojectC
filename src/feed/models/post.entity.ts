@@ -1,28 +1,34 @@
 /* eslint-disable prettier/prettier */
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { IsDefined, IsNumber, IsString } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('feed_post')
 export class FeedPostEntity {
   @PrimaryGeneratedColumn()
   user_id: number;
 
-  @Column({ default: '' })
+  @Column()
+  @IsString()
+  @IsDefined()
   name: string;
 
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @CreateDateColumn()
+  @Column()
   email: string;
 
-  @CreateDateColumn()
-  location: string;
+  @Column()
+  state: string;
 
-  @CreateDateColumn()
-  github: string;
+  @Column()
+  country: string;
+
+  @Column()
+  role: string;
+
+  @Column()
+  gender: string;
+
+  @Column()
+  address: string;
+  @Column()
+  mobile_number: number;
 }
