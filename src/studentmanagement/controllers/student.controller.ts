@@ -16,8 +16,10 @@ import { StudentsService } from '../Services/student.service';
 import { Observable } from 'rxjs';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { diskStorage } from 'multer';
-import { extname } from 'path';
+
 import { FileInterceptor } from '@nestjs/platform-express';
+import { extname } from 'path';
+
 @Controller('student')
 export class StudentsController {
   imagepath: string;
@@ -46,6 +48,7 @@ export class StudentsController {
   delete(@Param('id') id: number): Observable<DeleteResult> {
     return this.studentService.deletePost(id);
   }
+
   @Post('image')
   @UseInterceptors(
     FileInterceptor('image', {
@@ -68,7 +71,9 @@ export class StudentsController {
     console.log('path', image.path);
     return 'file upload API';
   }
+
   @Get('image/:image')
+  @Get('/image/:image')
   seeUploadedFile(@Param('image') image, @Res() res) {
     return res.sendFile(image, { root: './images' });
   }
