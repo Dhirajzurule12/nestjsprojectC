@@ -20,7 +20,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, createDocument(app));
   // app.setGlobalPrefix('nestjs');
 
-  await app.listen(3000);
+  await app.listen(30003);
 
   const config = new DocumentBuilder()
     .setTitle('Cats example')
