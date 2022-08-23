@@ -7,17 +7,19 @@ import {
   Param,
   Post,
   Put,
-  Res,
-  UploadedFile,
   UseInterceptors,
+  UploadedFile,
+  Res,
 } from '@nestjs/common';
 import { StudentPost } from '../model/post.interface';
 import { StudentsService } from '../Services/student.service';
 import { Observable } from 'rxjs';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { diskStorage } from 'multer';
+
 import { FileInterceptor } from '@nestjs/platform-express';
 import { extname } from 'path';
+
 @Controller('student')
 export class StudentsController {
   imagepath: string;
@@ -69,6 +71,8 @@ export class StudentsController {
     console.log('path', image.path);
     return 'file upload API';
   }
+
+  @Get('image/:image')
   @Get('/image/:image')
   seeUploadedFile(@Param('image') image, @Res() res) {
     return res.sendFile(image, { root: './images' });
