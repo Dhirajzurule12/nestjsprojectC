@@ -21,9 +21,7 @@ export class EmployeePostEntity {
   @IsString()
   emp_address: string;
 
-  @Column({ type: 'integer', default: null })
-  @IsNotEmpty()
-  @IsInt()
+  @Column()
   emp_contact: number;
 
   @Column({ type: 'int', default: null })
@@ -36,8 +34,8 @@ export class EmployeePostEntity {
   @IsString()
   emp_dept: string;
 
-  @Column({ default: '' })
-  @IsNotEmpty()
-  @IsString()
-  emp_image: string;
+  // @Column({ default: '' })
+  // @IsNotEmpty()
+  // @IsString()
+  // emp_image: string;
 }

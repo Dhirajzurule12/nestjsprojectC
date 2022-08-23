@@ -7,30 +7,36 @@ import { EmployeePost } from '../modules/post_interface';
 
 @Injectable()
 export class EmployeeService {
-    constructor(
-        @InjectRepository(EmployeePostEntity)
-        private readonly employeePostRepository: Repository<EmployeePostEntity>
-    ){}
+  constructor(
+    @InjectRepository(EmployeePostEntity)
+    private readonly employeePostRepository: Repository<EmployeePostEntity>,
+  ) {}
 
-    createPost(employeepost: EmployeePost):Observable<EmployeePost>{
-       return from(this.employeePostRepository.save(employeepost));
-    }
+  createPost(employeepost: EmployeePost): Observable<EmployeePost> {
+    return from(this.employeePostRepository.save(employeepost));
+  }
 
-    findAllPosts():Observable<EmployeePost[]>{
-        return from(this.employeePostRepository.find());
-    }
+  findAllPosts(): Observable<EmployeePost[]> {
+    return from(this.employeePostRepository.find());
+  }
 
-    getSpecificPost(id:number): Observable<EmployeePost> {
-        const emp_id = id;
-        return from(this.employeePostRepository.findOneBy({emp_id}));
-    }
+  getSpecificPost(id: number): Observable<EmployeePost> {
+    const emp_id = id;
+    return from(this.employeePostRepository.findOneBy({ emp_id }));
+  }
 
-   updatePost(id: number, employeepost: EmployeePost): Observable<UpdateResult>{
-     return from(this.employeePostRepository.update(id, employeepost))
-   }
+  updatePatchPost(
+    id: number,
+    employeepost: EmployeePost,
+  ): Observable<UpdateResult> {
+    return from(this.employeePostRepository.update(id, employeepost));
+  }
 
-   deletePost(id: number): Observable<DeleteResult>{
-        return from(this.employeePostRepository.delete(id));
-   }
+  updatePost(id: number, employeepost: EmployeePost): Observable<UpdateResult> {
+    return from(this.employeePostRepository.update(id, employeepost));
+  }
+
+  deletePost(id: number): Observable<DeleteResult> {
+    return from(this.employeePostRepository.delete(id));
+  }
 }
-
