@@ -14,19 +14,19 @@
 // }
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { StudentPost } from '../model/post.interface';
-@Entity('Student')
+@Entity('student')
 export class StudentPostEntity implements StudentPost {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: number;
-  @Column({ default: '' })
+  @Column()
   firstname: string;
-  @Column({ default: '' })
+  @Column()
   lastname: string;
   // @Column({ type: 'bigint', default: null })
-  @Column({ type: 'int' })
+  @Column()
   mobile: number;
-  @Column({ default: '' })
+  @Column()
   email: string;
-  @Column({ default: '' })
+  @Column()
   address: string;
 }

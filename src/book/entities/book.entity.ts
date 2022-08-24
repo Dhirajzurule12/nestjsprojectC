@@ -6,9 +6,9 @@ export class BookEntity {
     @Column({default: ''})
     book_name: string;
     @Column()
-    author: string;
+    book_author: string;
     @Column()
-    price: number;
+    book_price: number;
     @Column()
     book_image: string;
     @Column()
