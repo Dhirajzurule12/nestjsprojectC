@@ -8,7 +8,7 @@ import { ProductPost } from '../models/product.interface';
 import { ProductService } from '../services/product.service';
 import { CreateUserModel } from '../models/productModel';
 
-@Controller('feed')
+@Controller('product')
 export class ProductController {
   constructor(private ProductService: ProductService) {}
   @Post()

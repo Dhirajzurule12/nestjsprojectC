@@ -8,15 +8,12 @@ import { StudentModule } from './studentmanagement/student.module';
 import { BookModule } from './book/book.module';
 import { ProductModule } from './product/product.module';
 
-<<<<<<< HEAD
-import { FeedModule } from './feed/feed.module';
-import { EmployeeModule } from './employee/employee.module';
-=======
 
 import { FeedModule } from './feed/feed.module';
 import { EmployeeModule } from './employee/employee.module';
 
->>>>>>> 28e95345824a1bd80ecad999a1c27786d6d7a4bb
+
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -34,11 +31,6 @@ import { EmployeeModule } from './employee/employee.module';
     StudentModule,
     BookModule,
     ProductModule,
-<<<<<<< HEAD
- 
-=======
- ],
->>>>>>> 28e95345824a1bd80ecad999a1c27786d6d7a4bb
     FeedModule,
     EmployeeModule
   ],
