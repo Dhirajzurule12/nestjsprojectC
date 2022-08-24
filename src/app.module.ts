@@ -12,6 +12,8 @@ import { ProductModule } from './product/product.module';
 import { FeedModule } from './feed/feed.module';
 import { EmployeeModule } from './employee/employee.module';
 
+
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true },),
@@ -29,6 +31,7 @@ import { EmployeeModule } from './employee/employee.module';
     StudentModule,
     BookModule,
     ProductModule,
+    FeedModule,
      FeedModule,
     EmployeeModule
   ],

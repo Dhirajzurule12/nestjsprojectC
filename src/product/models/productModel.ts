@@ -3,12 +3,12 @@ import { ProductData, ProductSize } from "./product.entity";
 
 
 export class CreateUserModel{
-    @IsNotEmpty()
-    @IsString()
+   // @IsNotEmpty()
+    //@IsString()
     productName:string;
 
-    @IsNotEmpty()
-    @IsInt()
+   // @IsNotEmpty()
+   // @IsInt()
     price:number;
 
     @IsNotEmpty()
@@ -19,7 +19,7 @@ export class CreateUserModel{
     @IsEnum(ProductSize)
     size:ProductSize;
 
-    @IsNotEmpty()
+    //@IsNotEmpty()
     image:string;
 }
 
