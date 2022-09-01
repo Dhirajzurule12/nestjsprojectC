@@ -11,7 +11,11 @@ import { StudentModule } from './studentmanagement/student.module';
 
 import { BookCategoryModule } from './book/bookcategory.module';
 import { EmployeeModule } from './employee/employee.module';
+
+import { SubjectModule } from './studentmanagement/Subjects/subject.module';
+
 import { FeedModule } from './feed/feed.module';
+
 
 
 
@@ -35,7 +39,8 @@ import { FeedModule } from './feed/feed.module';
     ProductModule,
     FeedModule,
      FeedModule,
-    EmployeeModule
+    EmployeeModule,
+    SubjectModule
   ],
   controllers: [AppController],
   providers: [AppService],

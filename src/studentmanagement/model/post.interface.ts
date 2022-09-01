@@ -3,18 +3,17 @@
 //     body?:string;
 //     createdAt?:Date;
 
-import { IsEmail, IsNumber, IsString } from "class-validator";
+import { IsEmail, IsString } from 'class-validator';
 
 // }
 export class StudentPost {
-    @IsString()
+  @IsString()
   firstname?: string;
 
   @IsString()
   lastname?: string;
 
-  @IsNumber()
-  mobile?: number;
+
 
   @IsEmail()
   email?: string;
