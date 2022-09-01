@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BookCategoryEntity } from './bookcategory.entity';
 @Entity('book_detail')
 export class BookEntity {
     @PrimaryGeneratedColumn()
@@ -6,11 +7,19 @@ export class BookEntity {
     @Column({default: ''})
     book_name: string;
     @Column()
-    author: string;
+    book_author: string;
     @Column()
-    price: number;
+    book_price: number;
     @Column()
     book_image: string;
     @Column()
     book_isbn: string;
+    //myrunning
+    // @ManyToMany(() => BookCategoryEntity, (category : BookCategoryEntity) => category.book)
+    // @JoinTable()
+    // category : BookCategoryEntity[];
+
+    @ManyToMany(() => BookCategoryEntity)
+    // @JoinTable()
+    categories: BookCategoryEntity[]
 }

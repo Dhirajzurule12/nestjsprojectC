@@ -24,12 +24,6 @@ export class BookService {
         return from(this.bookRepository.findOneBy({ book_id }))
 
     }
-    // getSpecificBook(id:number): Observable<Book> {
-    // return from(this.bookRepository.find(id));
-    // const book_id = id;
-    // return from(this.bookRepository.findOneBy({book_id}));
-    // }
-
     updatePutBook(id: number, book: Book): Observable<UpdateResult> {
         return from(this.bookRepository.update(id, book));
     }
@@ -41,4 +35,13 @@ export class BookService {
     deleteBook(id: number): Observable<DeleteResult> {
         return from(this.bookRepository.delete(id));
     }
+
+    findAllPosts(): Observable<Book[]> {
+        return from(this.bookRepository.find());
+      }
+      
+      deletePost(id: number): Observable<DeleteResult> {
+        return from(this.bookRepository.delete(id));
+      }
+
 }
