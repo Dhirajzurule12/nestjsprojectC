@@ -4,6 +4,7 @@ import { StudentPostEntity } from './model/post.entity';
 import {StudentsController } from './controllers/student.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+
 @Module({
     imports:[
        TypeOrmModule.forFeature([StudentPostEntity]) 
