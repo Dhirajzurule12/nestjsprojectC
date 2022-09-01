@@ -12,10 +12,15 @@
 //     createdAt:Date;
 
 // }
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Subject } from 'rxjs';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { StudentPost } from '../model/post.interface';
+import { SubjectPostEntity } from '../Subjects/subject.entity';
+
+
 @Entity('student')
 export class StudentPostEntity implements StudentPost {
+
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
@@ -23,10 +28,13 @@ export class StudentPostEntity implements StudentPost {
   @Column()
   lastname: string;
   // @Column({ type: 'bigint', default: null })
-  @Column()
-  mobile: number;
+
   @Column()
   email: string;
   @Column()
   address: string;
+
+  @ManyToMany(() => SubjectPostEntity)
+  // @JoinTable()
+  categories:SubjectPostEntity[]
 }
