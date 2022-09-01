@@ -7,7 +7,7 @@ export class BookCategoryEntity {
   @PrimaryGeneratedColumn()
   bookcategory_id:number;
   @Column()
-  book_category:string;  
+  bookcategory_name:string;  
   //mycoderunning
   // @ManyToMany(() => BookEntity, (book : BookEntity) => book.category)  
   // book : BookEntity;
