@@ -14,11 +14,15 @@ async function bootstrap() {
 
   //app.setGlobalPrefix('nestjs');
 
+  //await app.listen(3000);
+  app.enableCors()
+
   // await app.listen(3000);
   //await app.listen(3000);git
   app.useGlobalPipes(new ValidationPipe());
   SwaggerModule.setup('api', app, createDocument(app));
   // app.setGlobalPrefix('nestjs');
+
 
 
  
@@ -33,12 +37,16 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   app.useGlobalPipes(new ValidationPipe());
   SwaggerModule.setup('api', app, document);
-
-  // app.enableCors();
+  //await app.listen(3003);
+  //await app.listen(3003);
   app.enableCors();
 
 
   await app.listen(3003);
+
+  await app.listen(3001);
+
+  // await app.listen(3003);
 
 }
 

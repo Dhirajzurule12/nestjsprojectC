@@ -1,17 +1,23 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { StudentModule } from './studentmanagement/student.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
 import { ProductModule } from './product/product.module';
+import { StudentModule } from './studentmanagement/student.module';
 
+
+import { BookCategoryModule } from './book/bookcategory.module';
+import { EmployeeModule } from './employee/employee.module';
+
+import { SubjectModule } from './studentmanagement/Subjects/subject.module';
 
 import { FeedModule } from './feed/feed.module';
-import { EmployeeModule } from './employee/employee.module';
-import { SubjectModule } from './studentmanagement/Subjects/subject.module';
+
+
+
 
 @Module({
   imports: [
@@ -29,7 +35,9 @@ import { SubjectModule } from './studentmanagement/Subjects/subject.module';
     }),
     StudentModule,
     BookModule,
+    BookCategoryModule,
     ProductModule,
+    FeedModule,
      FeedModule,
     EmployeeModule,
     SubjectModule
