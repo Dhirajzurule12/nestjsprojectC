@@ -1,3 +1,4 @@
+
 // export class CreateBookDto {
 //     book_id: number;
 //     book_name: string;
@@ -7,6 +8,7 @@
 //     book_isbn: string;
 // }
 import { IsInt, IsNotEmpty, IsString } from "class-validator";
+
 export class CreateBookDto {
     @IsNotEmpty()
     book_id: number;
