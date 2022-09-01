@@ -1,5 +1,8 @@
+
 export class CreateBookCategoryDto {
-  book_id:number;
-  book_author:string;
+  bookcategory_id:number;
   book_category:string;
+  // @ManyToMany(() => bookcategory)
+  //   @JoinTable()
+  //   categories: bookcategory[]
 }
