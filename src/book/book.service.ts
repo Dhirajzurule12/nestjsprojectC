@@ -39,7 +39,9 @@ export class BookService {
     findAllPosts(): Observable<Book[]> {
         return from(this.bookRepository.find());
       }
+      
       deletePost(id: number): Observable<DeleteResult> {
         return from(this.bookRepository.delete(id));
       }
+
 }
