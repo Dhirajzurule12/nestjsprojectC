@@ -11,6 +11,7 @@ import { ProductModule } from './product/product.module';
 
 import { FeedModule } from './feed/feed.module';
 import { EmployeeModule } from './employee/employee.module';
+import { SubjectModule } from './studentmanagement/Subjects/subject.module';
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { EmployeeModule } from './employee/employee.module';
     BookModule,
     ProductModule,
      FeedModule,
-    EmployeeModule
+    EmployeeModule,
+    SubjectModule
   ],
   controllers: [AppController],
   providers: [AppService],

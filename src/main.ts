@@ -21,7 +21,7 @@ async function bootstrap() {
   // app.setGlobalPrefix('nestjs');
 
 
-  await app.listen(30003);
+ 
 
 
   const config = new DocumentBuilder()
@@ -36,9 +36,9 @@ async function bootstrap() {
 
   // app.enableCors();
   app.enableCors();
-  await app.listen(3003);
 
-  // await app.listen(3003);
+
+  await app.listen(3003);
 
 }
 
