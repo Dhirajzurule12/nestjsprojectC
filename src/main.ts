@@ -20,7 +20,10 @@ async function bootstrap() {
   // app.useGlobalPipes(new ValidationPipe());
   // SwaggerModule.setup('api', app, createDocument(app));
   // app.setGlobalPrefix('nestjs');
+  app.enableCors();
+  // const cors=require("cors");
 
+  await app.listen(3001);
   const config = new DocumentBuilder()
     .setTitle('Cats example')
     .setDescription('The cats API description')
@@ -36,7 +39,7 @@ async function bootstrap() {
 
   app.enableCors();
 
-  await app.listen(3003);
+  // await app.listen(3003);
 
   // await app.listen(3001);
   // await app.listen(3003);
