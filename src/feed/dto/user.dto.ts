@@ -1,32 +1,29 @@
 /* eslint-disable prettier/prettier */
+// import { IsDefined, IsEmail, IsNumber, IsString } from 'class-validator';
+
 import { IsDefined, IsEmail, IsNumber, IsString } from 'class-validator';
+import { Address } from '../address/entities/address.entity';
+
+import { Role } from '../role/entities/role.entity';
 
 /* eslint-disable prettier/prettier */
 export class UserDto {
   @IsEmail()
   @IsDefined()
-  readonly email: string;
-  @IsDefined()
-  @IsString()
-  readonly name: string;
-  @IsDefined()
-  @IsString()
-  readonly state: string;
-  @IsDefined()
-  @IsString()
-  readonly country: string;
-  @IsDefined()
-  @IsString()
-  readonly role: string;
-  @IsDefined()
-  @IsString()
-  readonly gender: string;
-  @IsNumber()
-  @IsString()
-  readonly mobile_number: number;
-  @IsDefined()
-  @IsString()
-  readonly address: string;
+  email: string;
 
-  readonly user_id: number;
+  @IsDefined()
+  @IsString()
+  name: string;
+
+  address: Address;
+
+  @IsDefined()
+  @IsString()
+  gender: string; //used
+
+  @IsNumber()
+  mobile_number: number; //used
+
+  user_id: number;
 }

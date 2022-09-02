@@ -1,25 +1,23 @@
-import { IsEnum, IsInt, IsNotEmpty, IsString, } from "class-validator";
-import { ProductData, ProductSize } from "./product.entity";
+// import { IsEnum, IsInt, IsNotEmpty, IsString } from 'class-validator';
+// import { ProductData } from './product.entity';
 
+// export class CreateUserModel {
+//   // @IsNotEmpty()
+//   //@IsString()
+//   productName: string;
 
-export class CreateUserModel{
-   // @IsNotEmpty()
-    //@IsString()
-    productName:string;
+//   // @IsNotEmpty()
+//   // @IsInt()
+//   price: number;
 
-   // @IsNotEmpty()
-   // @IsInt()
-    price:number;
+//   @IsNotEmpty()
+//   @IsEnum(ProductData)
+//   stock: ProductData;
 
-    @IsNotEmpty()
-    @IsEnum(ProductData)
-    stock:ProductData;
+//   @IsNotEmpty()
+//   @IsEnum(ProductSize)
+//   size: ProductSize;
 
-    @IsNotEmpty()
-    @IsEnum(ProductSize)
-    size:ProductSize;
-
-    //@IsNotEmpty()
-    image:string;
-}
-
+//   //@IsNotEmpty()
+//   image: string;
+// }

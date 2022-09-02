@@ -1,0 +1,1248 @@
+//first step to create vue app to communicate with html
+
+
+      1) const app=vue.createApp():-> It create the createApp and stored in a app variable
+               
+         
+
+
+    2)app.mount('#id'):->It takes parameter as string and that string holds a CSS selector which uniquely identified the element in our DOM in our HTML code , which we wanna control
+                           --> mount ke andar me jo v css selector rahega vuejs utna part of html code ko controll karega...
+
+
+
+              data :function(){}        //data is the key , data once a function as a value
+                      
+                           //---or--
+   
+               data(){}                  //the values stored in the data property is a function
+
+Qn) What this function do ?
+Ans) It returns an object and always an object , Not an array , Not a number not an string.
+
+
+               data(){
+                 return {
+                   courseGoal:'Finish the course and learn vuejs';  
+                        };
+                     }
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+      <p></p>
+    </section>
+  </body>
+</html>
+
+
+
+
+const app=Vue.createApp({
+    data(){
+        return {
+            courseGoal:'Finish the course and learn Vue!!'
+        }
+    }
+
+}); 
+
+app.mount('#user-goal');
+
+
+=================================================================================================================================================================
+
+   <section id="user-goal">
+      <h2>My Course Goal</h2>
+      <p>{{courseGoal}}</p>
+    </section>
+
+
+--> Vue will make a connection and will understand that you wanna output the content stored in courseGoal here.
+
+--> Here ,  {{return data properties i.e courseGoal or key}} is used in Html code which is known as interpolation
+
+-->interpolation means simply you can refrence properties,that are part of that object you return in data and then the value of the property will be output 
+
+
+=================================================================================================================================================================
+
+                                            Binding Attributes with the "v-bind" Directive
+                                            ----------------------------------------------
+
+
+{{}} is not used in attribute.It will not show an output.so use different syntax which is known as binding syntax.The directive we used in html code is V-bind.
+
+-->V-bind is a reserved name , detected and understood by vue.
+
+-->All built in directives which ship with Vue , start with "v-".
+
+-->A directive is basically an instruction , an instruction which we give to Vue to do something and v-bind tells Vue to bind , so to set the value of something and the "of something" part basically just mns of an attribute on an HTML element.
+
+-->And to let Vue know which attribute value to set , we add a colon after v-bind and then the attribute name.The full syntax is 
+
+
+
+               Syntax :->   <a v-bind:href=""></a>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+      <p>{{courseGoal}}</p>
+      <p>Learn more <a v-bind:href="vuelink">about vue.</a></p>
+      
+    </section>
+  </body>
+</html>
+
+
+
+
+
+
+const app=Vue.createApp({
+    data(){
+        return {
+            courseGoal:'Finish the course and learn Vue!!',
+            vuelink:'https://vuejs.org/'
+        
+        };
+    }
+
+}); 
+
+app.mount('#user-goal');
+
+
+
+=================================================================================================================================================================
+
+                                methods in Vuejs
+                               *******************
+
+
+Inside method we can use whatever we want .The only imp thing here is  , that all properties you defined in this methods object need to be functions , because they need to be callable as functions
+
+ Synatx:->                    methods:{
+                                    outputGoal:function(){}
+                                      }
+
+                          //----------OR---------
+
+                             methods:{
+                                   outputGoal(){
+                                     }
+  
+
+
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+      <p>{{courseGoal}}</p>
+      <p>{{outputGoal()}}</p>
+      <p>Learn more <a v-bind:href="vuelink">about vue.</a></p>
+      
+    </section>
+  </body>
+</html>
+
+
+
+
+
+
+const app=Vue.createApp({
+    data(){
+        return {
+            courseGoal:'Finish the course and learn Vue!!',
+            vuelink:'https://vuejs.org/'
+        
+        };
+    },
+    methods:{
+        outputGoal(){
+            const randomNumber=Math.random();
+            if(randomNumber<0.5){
+                return 'Learn Vue';
+            }else{
+                return 'Master Vue';
+            }
+        }
+    }
+
+}); 
+
+app.mount('#user-goal');
+
+
+=================================================================================================================================================================
+
+
+                                                             Working with Data inside of a Vue APP
+                                                            ***************************************
+
+
+
+It basically takes all the data you return in this data object , which you return the data method , and it merges it into a global Vue instance object.
+
+-->So into your Vue app object , you could say so these data properties are available in a behind the scenes managed Vue app object.Method are also
+ available there and they do have access to anything stored in that global object through this keyword.
+
+
+
+const app=Vue.createApp({
+    data(){
+        return {
+            courseGoalA:'Finish the course and learn Vue!!',
+            courseGoalB:'Master Vue and build an amazing vuejs',
+
+            vuelink:'https://vuejs.org/'
+        
+        };
+    },
+    methods:{
+        outputGoal(){
+            const randomNumber=Math.random();
+            if(randomNumber<0.5){
+                return this.courseGoalA;
+            }else{
+                return this.courseGoalB;
+            }
+        }
+    }
+
+}); 
+
+app.mount('#user-goal');
+
+=================================================================================================================================================================
+
+                                                        Outputting Raw HTML content with v-html
+                                                        ***************************************
+
+
+const app=Vue.createApp({
+    data(){
+        return {
+            courseGoalA:'<h2>Finish the course and learn Vue!!<h2>',
+            courseGoalB:'Master Vue and build an amazing vuejs',
+
+            vuelink:'https://vuejs.org/'
+        
+        };
+    },
+    methods:{
+        outputGoal(){
+            const randomNumber=Math.random();
+            if(randomNumber<0.5){
+                return this.courseGoalA;
+            }else{
+                return this.courseGoalB;
+            }
+        }
+    }
+
+}); 
+
+app.mount('#user-goal');
+
+O/p
+<h2>Finish the course and learn Vue!!<h2>
+
+
+In output html element is not worked and clearly we can see it is printed as text in output.So here we can use v-html in HTML code
+
+--> With v-html , you set the content between opening and closing text of an element.
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+     
+      <p v-html="outputGoal()"></p>
+      <p>Learn more <a v-bind:href="vuelink">about vue.</a></p>
+      
+    </section>
+  </body>
+</html>
+
+
+
+
+
+const app=Vue.createApp({
+    data(){
+        return {
+            courseGoalA:'<h2>Finish the course and learn Vue!!<h2>',
+            courseGoalB:'Master Vue and build an amazing vuejs',
+
+            vuelink:'https://vuejs.org/'
+        
+        };
+    },
+    methods:{
+        outputGoal(){
+            const randomNumber=Math.random();
+            if(randomNumber<0.5){
+                return this.courseGoalA;
+            }else{
+                return this.courseGoalB;
+            }
+        }
+    }
+
+}); 
+
+app.mount('#user-goal');
+
+================================================================================================================================================================
+
+
+                                                Understanding Event Binding
+                                               ******************************
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button>Add</button>
+      <button>Reduce</button>
+      <p>Result :: {{counter}}</p>
+      
+    </section>
+  </body>
+</html>
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+});
+
+app.mount("#events");
+
+
+
+
+-->Vue gives  us aneasier way of adding Eventlister to HTML element.If we wanna add a click listener to this button , we can use a another Vue directive.
+-->v-on is the name of vue directive
+-->v-on takes a so called argument , after a colon,just like v-bind took the attribute
+-->v-on takes the event to which you wanna listen after the colon.
+
+
+Syntax :->   <a v-bind:href=""></a>   [v-bind]
+
+syntax:->  <button v-on:click="">Add</button>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="counter=counter+1">Add</button>
+      <button v-on:click="counter--">Reduce</button>
+      <p>Result :: {{counter}}</p>
+      
+    </section>
+  </body>
+</html>
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+});
+
+app.mount("#events");
+
+
+
+//we should not write a logic inside the html code.we will write inside the app.js
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add()">Add</button>
+      <button v-on:click="Sub()">Reduce</button>
+      <p>Result :: {{counter}}</p>
+      
+    </section>
+  </body>
+</html>
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+  methods:{
+    add(){
+        this.counter=this.counter+1;
+    },
+    Sub(){
+        this.counter=this.counter-1;
+    }
+  }
+});
+
+app.mount("#events");
+
+
+======================================================================================================================================================
+
+                              		 Working with Event Arguments
+                             		********************************
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="Sub(5)">Reduce 5</button>
+      <p>Result :: {{counter}}</p>
+      
+    </section>
+  </body>
+</html>
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+  methods:{
+    add(num){
+        this.counter=this.counter+num;
+    },
+    Sub(num){
+        this.counter=this.counter-num;
+    }
+  }
+});
+
+app.mount("#events");
+
+
+
+
+===========================================================================================================================================================
+
+                                                    Using the Native Event Object
+                                                  ********************************
+
+The best event to listen to on an input HTML element is the input element
+
+Ex:->  <input type="text" v-on:input=""> which is default DOM element available on input elements
+
+
+
+
+----------------Now we can also argument by using dollar suymbols($) as shown below code
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Schwarzmüller')">
+      <p>Your Name: {{ name }}</p>
+    </section>
+  </body>
+</html>
+
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: ''
+    };
+  },
+  methods: {
+    setName(event, lastName) {
+      this.name = event.target.value + ' ' + lastName;
+    },
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    }
+  }
+});
+
+app.mount('#events');
+
+
+
+
+
+
+
+=============================================================================================================================================================================================================
+
+
+						Exploring Event Modifier
+				              ******************************
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Schwarzmüller')">
+      <p>Your Name: {{ name }}</p>
+      <form v-on:submit="submitForm">
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
+    </section>
+  </body>
+</html>
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: ''
+    };
+  },
+  methods: {
+    setName(event, lastName) {
+      this.name = event.target.value + ' ' + lastName;
+    },
+    submitForm(event){
+      
+      alert('Submited');
+    },
+
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    }
+  }
+});
+
+app.mount('#events');
+
+
+
+Here as soon as we click to the SignUp button , the previous data lost and page refreshed this is default behaviour of browser
+.So if  we dont want to loss previous data so the code example is given below:->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Schwarzmüller')">
+      <p>Your Name: {{ name }}</p>
+      <form v-on:submit="submitForm">
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
+    </section>
+  </body>
+</html>
+
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: ''
+    };
+  },
+  methods: {
+    setName(event, lastName) {
+      this.name = event.target.value + ' ' + lastName;
+    },
+    submitForm(event){
+      event.preventDefault();
+      alert('Submited');
+    },
+
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    }
+  }
+});
+
+app.mount('#events');
+
+
+
+But in Vuejs we can do it easily to get the previous data as it is or to prevent from default behaviour of browser...the example is given below:->
+
+--> just add .prevent after
+
+     Synatx:-> v-on:submit.prevent="submitForm"
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Schwarzmüller')">
+      <p>Your Name: {{ name }}</p>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
+    </section>
+  </body>
+</html>
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: ''
+    };
+  },
+  methods: {
+    setName(event, lastName) {
+      this.name = event.target.value + ' ' + lastName;
+    },
+    submitForm(event){
+      alert('Submited');
+    },
+
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    }
+  }
+});
+
+app.mount('#events');
+
+
+
+-----------------------------------------------
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Schwarzmüller')" v-on:keyup.enter="confirmedInput">
+      <p>Your NAme: {{ confirmedName }}</p>
+      <p>Your Name: {{ name }}</p>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
+    </section>
+  </body>
+</html>
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: '',
+      confirmedName:''
+    };
+  },
+  methods: {
+    confirmedInput(){
+      this.confirmedName=this.name;
+    },
+    
+    setName(event, lastName) {
+      this.name = event.target.value + ' ' + lastName;
+    },
+    submitForm(event){
+      alert('Submited');
+    },
+
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    }
+  }
+});
+
+app.mount('#events');
+
+
+
+==============================================================================================================================================================
+
+
+                                                      Locking Content with v-once
+						    ********************************
+
+-->  If you have such a scenario that you have some data that chnges and you want to preserve the initial state and not reflect any other changes , 
+there is a special directive you can put on to the element where you are using that dynamic value in And that's the V once directive which is built into Vue.
+
+-->  This tells Vue that any dynamic data bindings,like the interpolation here on this element should be evaloauted once
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p v-once>Starting Counter:: {{ counter}}</p>
+      <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Schwarzmüller')" v-on:keyup.enter="confirmedInput">
+      <p>Your NAme: {{ confirmedName }}</p>
+      <!-- <p>Your Name: {{ name }}</p> -->
+      <form v-on:submit.prevent="submitForm">
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
+    </section>
+  </body>
+</html>
+
+
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: '',
+      confirmedName:''
+    };
+  },
+  methods: {
+    confirmedInput(){
+      this.confirmedName=this.name;
+    },
+    
+    setName(event, lastName) {
+      this.name = event.target.value + ' ' + lastName;
+    },
+    submitForm(event){
+      alert('Submited');
+    },
+
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    }
+  }
+});
+
+app.mount('#events');
+=================================================================================================================================================================
+
+						Data Binding + Event Binding=Two-way Binding
+				            *****************************************************
+
+Reset Input functionality
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text"  v-bind:value="name"   v-on:input="setName($event, 'Jaishwal')">
+      <button v-on:click="resetInput">Reset Input</button>
+      <p>Your Name: {{ name }}</p>
+    </section>
+  </body>
+</html>
+
+
+
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: ''
+    };
+  },
+  methods: {
+    setName(event, lastName) {
+      this.name = event.target.value;
+    },
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    },
+    resetInput(){
+      this.name='';
+    }
+
+  }
+});
+
+app.mount('#events');
+
+
+Here this is lengthy code we can do in single code i.e
+
+**) v-bind:value="" v-on:input="" ~ {is equivalent to} v-model="name"
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <input type="text"  v-model="name">
+      <button v-on:click="resetInput">Reset Input</button>
+      <p>Your Name: {{ name }}</p>
+    </section>
+  </body>
+</html>
+
+
+
+
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      name: ''
+    };
+  },
+  methods: {
+    setName(event, lastName) {
+      this.name = event.target.value;
+    },
+    add(num) {
+      this.counter = this.counter + num;
+    },
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
+    },
+    resetInput(){
+      this.name='';
+    }
+
+  }
+});
+
+app.mount('#events');
+
+
+Note:-> v-mode is two-way binding, and therefore the combination of data binding and event handelling...
+
+
+========================================================================================================================================================================
+
+						Methods used for Data Binding:How it Works
+					     *************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     
+
+
+
+
+
+
+
+
+
+
